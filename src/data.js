@@ -197,7 +197,7 @@ export default {
         },
         button: {
             text: 'Подробнее',
-            url: '#',
+            url: 'https://common.skolkovo.ru/moove-by-skolkovo-mts/',
         },
     },
     svg: {
