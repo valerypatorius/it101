@@ -47,11 +47,12 @@ export const formatNumber = (number, string = '&nbsp;') => number.toString().rep
  * @param {Number} offset - Offset from top screen edge
  */
 export const scrollToElement = (element, offset = 0) => {
+    const elTop = element.getBoundingClientRect().top;
     const y = element.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - offset;
 
-    console.log(y);
-
-    window.scroll(0, y);
+    if (elTop < offset) {
+        window.scroll(0, y);
+    }
 
     // Uncomment when using native smooth scroll (or smoothscroll-polyfill)
     // window.scroll({ top: y, left: 0, behavior: 'smooth' });

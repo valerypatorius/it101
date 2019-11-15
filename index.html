@@ -70,7 +70,7 @@
                 var Special = new It101({
                     container: newContainer,
                     css: './app.css?v=' + v,
-                    // isCompact: true,
+                    isCompact: !!document.querySelector('[air-module="module.feed"]'),
                 });
             }
         })(document, 6);
