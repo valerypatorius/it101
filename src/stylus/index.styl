@@ -136,8 +136,9 @@
 
         @media $mq.mobile
             width: auto
-            height: 70px
+            height: 75px
             font-size: 16px
+            padding: 0 15px
 
         @media $mq.tablet
             height: 125px
@@ -196,6 +197,9 @@
                 @media $mq.desktop
                     font-size: 30px
 
+                @media $mq.mobile
+                    font-size: 18px
+
         &--correct
             color: $colors.green
 
@@ -224,7 +228,7 @@
                 margin-top: 5px
 
             @media $mq.mobile
-                font-size: 14px
+                font-size: 13px
                 margin-top: 0
 
         &__icon
@@ -251,13 +255,13 @@
         &:hover
             .sp-it101__option__label,
             .sp-it101__option__message
-                @media $mq.not_mobile
+                @media $mq.hover
                     opacity: 0
                     transform: scale(0.9)
                     transition-duration: 0.1s
 
             .sp-it101__option__icon
-                @media $mq.not_mobile
+                @media $mq.hover
                     opacity: 1
                     transform: scale(1)
                     transition-duration: 0.2s
@@ -422,7 +426,7 @@
                 font-size: 14px
 
             &:hover
-                @media $mq.not_mobile
+                @media $mq.hover
                     background-color: darken(@background-color, 50%)
 
         &__restart
@@ -433,7 +437,7 @@
             transition: all 0.14s ease-in-out
 
             &:hover
-                @media $mq.not_mobile
+                @media $mq.hover
                     color: darken($colors.border.thick, 50%)
 
                     svg
