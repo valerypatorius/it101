@@ -78,13 +78,14 @@ class Special extends BaseSpecial {
         EL.header = makeElement('div', bem('header'));
         this.container.appendChild(EL.header);
 
+        this.prepareLives();
+
         EL.question = makeElement('div', bem('question'));
         EL.header.appendChild(EL.question);
 
         EL.content = makeElement('div', bem('content'));
         this.container.appendChild(EL.content);
 
-        this.prepareLives();
         this.prepateProgressBar();
     }
 
@@ -360,12 +361,12 @@ class Special extends BaseSpecial {
         parent.appendChild(background);
 
         const title = makeElement('div', bem('final__title'), {
-            textContent: isFinished ? Data.final.title.finished : Data.final.title.unfinished,
+            innerHTML: isFinished ? Data.final.title.finished : Data.final.title.unfinished,
         });
         parent.appendChild(title);
 
         const text = makeElement('div', bem('final__text'), {
-            innerHTML: Data.final.text,
+            innerHTML: isFinished ? Data.final.text.finished : Data.final.text.unfinished,
         });
         parent.appendChild(text);
 

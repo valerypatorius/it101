@@ -26,15 +26,16 @@
         display: block
 
     &__header
-        height: 120px
-        display: flex
-        align-items: center
         animation: sp-it101-show 0.14s
 
         @media $mq.mobile
-            height: auto
             padding: 20px 0
-            align-items: flex-start
+
+        @media $mq.not_mobile
+            height: 120px
+            display: flex
+            flex-direction: row-reverse
+            align-items: center
 
     &__question
         font-size: 28px
@@ -74,6 +75,7 @@
         align-items: center
 
         @media $mq.mobile
+            float: right
             margin-left: 15px
             margin-top: 5px
 
@@ -249,7 +251,6 @@
                     max-height: 50px
 
                 @media $mq.mobile
-                    display: none
                     max-height: 40px
 
         &:hover
