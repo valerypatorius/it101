@@ -70,6 +70,7 @@
                 font-size: 35px
 
     &__lives
+        flex-shrink: 0
         margin-left: 40px
         display: flex
         align-items: center
@@ -89,7 +90,14 @@
                 margin-bottom: 0
 
     &__live
+        flex-shrink: 0
         position: relative
+
+        @media $mq.not_desktop
+            width: 20px
+
+        @media $mq.mobile
+            width: 16px
 
         &:not(:last-child)
             margin-right: 15px
@@ -521,6 +529,8 @@
                     margin-left: 20px
 
                 &__live
+                    width: 20px
+
                     &:not(:last-child)
                         margin-right: 10px
 

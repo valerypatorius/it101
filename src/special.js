@@ -237,8 +237,10 @@ class Special extends BaseSpecial {
             EL.progress.push(item);
         }
 
-        const logo = makeElement('div', bem('progress__logo'), {
+        const logo = makeElement('a', bem('progress__logo'), {
             innerHTML: Data.svg.logo,
+            target: '_blank',
+            href: Data.final.button.url,
         });
         parent.appendChild(logo);
 
