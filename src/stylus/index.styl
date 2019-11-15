@@ -1,0 +1,594 @@
+@import 'variables';
+
+.sp-it101
+    margin: 0 auto
+    background-color: $colors.white
+    color: $colors.text
+    padding: 0 40px 40px
+    position: relative
+    z-index: 1
+    display: flex
+    flex-direction: column
+
+    @media $mq.not_mobile
+        min-height: 600px
+
+    @media $mq.not_desktop
+        padding: 0 20px 40px
+        max-width: 640px
+        min-height: 450px
+
+    @media $mq.mobile
+        min-height: 0
+        padding: 0 15px 30px
+
+    svg
+        display: block
+
+    &__header
+        height: 120px
+        display: flex
+        align-items: center
+        animation: sp-it101-show 0.14s
+
+        @media $mq.mobile
+            height: auto
+            padding: 20px 0
+            align-items: flex-start
+
+    &__question
+        font-size: 28px
+        line-height: 1.3em
+        font-weight: 500
+        margin-right: auto
+
+        @media $mq.mobile
+            font-size: 18px
+
+        @media $mq.tablet
+            font-size: 20px
+
+        &__finished
+            color: $colors.green
+
+            @media $mq.not_desktop
+                font-size: 22px
+
+        &__unfinished
+            color: $colors.red
+
+            @media $mq.not_desktop
+                font-size: 22px
+
+        span
+            animation: sp-it101-show 0.14s
+
+    &[data-progress="0"]
+        .sp-it101__question
+            @media $mq.desktop
+                font-size: 35px
+
+    &__lives
+        margin-left: 40px
+        display: flex
+        align-items: center
+
+        @media $mq.mobile
+            margin-left: 15px
+            margin-top: 5px
+
+        @media $mq.tablet
+            margin-left: 20px
+
+    &__live
+        position: relative
+
+        &:not(:last-child)
+            margin-right: 15px
+
+            @media $mq.not_desktop
+                margin-right: 10px
+
+        svg
+            @media $mq.not_desktop
+                width: 20px
+                height: auto
+
+            @media $mq.mobile
+                width: 16px
+                height: auto
+
+            &:nth-child(2)
+                position: absolute
+                top: 0
+                left: 0
+
+        &--empty
+            svg
+                &:nth-child(2)
+                    animation: sp-it101-heart-hide 0.2s ease-in-out forwards
+
+    &__content
+        display: flex
+        flex-wrap: wrap
+        margin-bottom: auto
+
+        @media $mq.mobile
+            flex-wrap: nowrap
+            flex-direction: column
+
+    &__option
+        width: 50%
+        height: 200px
+        padding: 20px
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        text-align: center
+        border: 1px solid $colors.border.thin
+        font-size: 25px
+        line-height: 1.2em
+        position: relative
+        overflow: hidden
+        cursor: pointer
+        animation: sp-it101-show 0.14s
+
+        @media $mq.mobile
+            width: auto
+            height: 70px
+            font-size: 16px
+
+        @media $mq.tablet
+            height: 125px
+            font-size: 18px
+
+        &:before
+            content: ''
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            z-index: -1
+            transform: scaleX(0)
+            transform-origin: 100% 0
+            transition: all 0.3s ease-in-out
+
+        &--delayed
+            &:before
+                transition-delay: 100ms
+
+        &:nth-child(2n+1)
+            @media $mq.not_mobile
+                border-right: 1px solid $colors.border.thick
+
+        &:nth-child(n+3)
+            @media $mq.not_mobile
+                border-top: 1px solid $colors.border.thick
+
+        &:nth-child(2n)
+            @media $mq.not_mobile
+                border-left: 0
+
+        &:nth-child(-n+2)
+            @media $mq.not_mobile
+                border-bottom: 0
+
+        &:not(:first-child)
+            @media $mq.mobile
+                border-top: 0
+
+        &:not(:last-child)
+            @media $mq.mobile
+                border-bottom: 1px solid $colors.border.thick
+
+        &--disabled
+            pointer-events: none
+
+        &--message
+            .sp-it101__option__label
+                transition-property: opacity, transform
+                font-weight: 500
+                font-size: 20px
+                line-height: 1.1em
+
+                @media $mq.desktop
+                    font-size: 30px
+
+        &--correct
+            color: $colors.green
+
+            &:before
+                transform: scaleX(1)
+                background-color: rgba($colors.green, 0.06)
+
+        &--incorrect
+            color: $colors.red
+
+            &:before
+                transform: scaleX(1)
+                background-color: rgba($colors.red, 0.06)
+
+        &__label,
+        &__message
+            transition: all 0.2s ease-in-out
+
+        &__message
+            font-size: 20px
+            line-height: 1.3em
+            margin-top: 10px
+
+            @media $mq.tablet
+                font-size: 16px
+                margin-top: 5px
+
+            @media $mq.mobile
+                font-size: 14px
+                margin-top: 0
+
+        &__icon
+            width: 100%
+            height: 100%
+            display: flex
+            align-items: center
+            justify-content: center
+            position: absolute
+            left: 0
+            top: 0
+            opacity: 0
+            transform: scale(1.1)
+            transition: all 0.1s ease-in-out
+
+            svg
+                @media $mq.not_desktop
+                    max-height: 50px
+
+                @media $mq.mobile
+                    display: none
+                    max-height: 40px
+
+        &:hover
+            .sp-it101__option__label,
+            .sp-it101__option__message
+                @media $mq.not_mobile
+                    opacity: 0
+                    transform: scale(0.9)
+                    transition-duration: 0.1s
+
+            .sp-it101__option__icon
+                @media $mq.not_mobile
+                    opacity: 1
+                    transform: scale(1)
+                    transition-duration: 0.2s
+
+    &__grid
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        z-index: -1
+
+        &__x,
+        &__y
+            width: 100%
+            height: 100%
+            position: absolute
+            top: 0
+            left: 0
+
+        &__line
+            background-color: $colors.border.thin
+            position: absolute
+            top: 0
+            left: 0
+
+            &--vertical
+                width: 1px
+                height: 100%
+
+                for i in 1..15
+                    &:nth-child({i})
+                        left: (i * 10)%
+
+                        @media (min-width: 430px) and (max-width: 639px)
+                            left: (i * 7.7)%
+
+                        @media $mq.iphone5
+                            left: (i * 12.5)%
+
+            &--horizontal
+                width: 100%
+                height: 1px
+
+                for i in 1..4
+                    &:nth-child({i})
+                        top: (i * 25)%
+
+                        @media $mq.mobile
+                            top: (i * 50)%
+
+    &__progress
+        margin-top: 40px
+        height: 0
+        display: flex
+        align-items: center
+        animation: sp-it101-show 0.14s
+
+        @media $mq.mobile
+            margin-top: 35px
+
+        &__item
+            height: 3px
+            flex-grow: 1
+            background-color: $colors.border.progress
+            transition: background-color 0.14s ease-in-out
+
+            &:not(:last-child)
+                margin-right: 10px
+
+                @media $mq.mobile
+                    margin-right: 4px
+
+            &--correct
+                background-color: rgba($colors.green, 0.5)
+
+            &--incorrect
+                background-color: rgba($colors.red, 0.5)
+
+        &__logo
+            height: 0
+            display: flex
+            align-items: center
+            margin-left: 35px
+
+            @media $mq.not_desktop
+                margin-left: 25px
+
+            @media $mq.mobile
+                margin-left: 15px
+
+            svg
+                @media $mq.not_desktop
+                    width: 90px
+                    height: auto
+
+                @media $mq.mobile
+                    width: 55px
+
+    &__final
+        font-size: 20px
+        line-height: 1.3em
+        max-width: 670px
+        animation: sp-it101-show 0.14s
+
+        @media $mq.not_desktop
+            font-size: 16px
+            line-height: 1.4em
+            max-width: none
+
+        @media $mq.mobile
+            font-size: 14px
+
+        &__title
+            font-size: 26px
+            line-height: 1.3em
+            font-weight: 500
+            margin-bottom: 15px
+
+            @media $mq.not_desktop
+                font-size: 22px
+                margin-bottom: 10px
+
+            @media $mq.mobile
+                font-size: 18px
+
+        &__text
+            p
+                margin-bottom: 17px
+
+                @media $mq.not_desktop
+                    margin-bottom: 12px
+
+        &__actions
+            display: flex
+            align-items: center
+            margin-top: 30px
+
+            @media $mq.not_desktop
+                margin-top: 20px
+
+        &__button
+            display: block
+            font-size: 18px
+            background-color: $colors.button
+            color: $colors.white
+            width: 190px
+            height: 55px
+            line-height: @height
+            text-align: center
+            margin-right: 40px
+            transition: all 0.14s ease-in-out
+
+            @media $mq.not_desktop
+                font-size: 16px
+                width: 130px
+                height: 40px
+                line-height: @height
+                margin-right: 25px
+
+            @media $mq.mobile
+                font-size: 14px
+
+            &:hover
+                @media $mq.not_mobile
+                    background-color: darken(@background-color, 50%)
+
+        &__restart
+            cursor: pointer
+            display: flex
+            align-items: center
+            color: $colors.border.thick
+            transition: all 0.14s ease-in-out
+
+            &:hover
+                @media $mq.not_mobile
+                    color: darken($colors.border.thick, 50%)
+
+                    svg
+                        transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+                        transform: rotate(360deg)
+
+            svg
+                flex-shrink: 0
+                margin-right: 15px
+                fill: currentColor
+                margin-top: -1px
+
+                @media $mq.not_desktop
+                    width: 16px
+                    height: auto
+                    margin-right: 10px
+
+        &__background
+            position: absolute
+            top: 120px + 50px
+            right: 40px
+            z-index: -1
+
+            @media $mq.not_desktop
+                top: 120px + 15px
+                right: 20px
+
+            @media $mq.mobile
+                top: 50%
+                right: 15px
+                transform: translateY(-50%)
+
+            svg
+                &:nth-child(1)
+                    @media $mq.not_desktop
+                        display: none
+
+                &:nth-child(2)
+                    position: absolute
+                    bottom: 32px
+                    right: 0
+
+                    @media $mq.not_desktop
+                        display: none
+
+                &:nth-child(3)
+                    display: none
+
+                    @media $mq.not_desktop
+                        display: block
+
+    &--compact
+        &[data-progress="0"]
+            .sp-it101__question
+                @media $mq.desktop
+                    font-size: 20px
+
+        @media $mq.desktop
+            padding: 0 20px 40px
+            max-width: 640px
+            min-height: 450px
+
+            .sp-it101
+                &__question
+                    font-size: 20px
+
+                    &__finished
+                        font-size: 22px
+
+                    &__unfinished
+                        font-size: 22px
+
+                &__lives
+                    margin-left: 20px
+
+                &__live
+                    &:not(:last-child)
+                        margin-right: 10px
+
+                    svg
+                        width: 20px
+                        height: auto
+
+                &__option
+                    height: 125px
+                    font-size: 18px
+
+                    &--message
+                        .sp-it101__option__label
+                            font-size: 22px
+
+                    &__message
+                        font-size: 16px
+                        margin-top: 5px
+
+                    &__icon
+                        svg
+                            max-height: 50px
+
+                &__progress
+                    &__logo
+                        margin-left: 25px
+
+                        svg
+                            width: 90px
+                            height: auto
+
+                &__final
+                    font-size: 16px
+                    line-height: 1.4em
+                    max-width: none
+
+                    &__title
+                        font-size: 22px
+                        margin-bottom: 10px
+
+                    &__text
+                        p
+                            margin-bottom: 12px
+
+                    &__actions
+                        margin-top: 20px
+
+                    &__button
+                        font-size: 16px
+                        width: 130px
+                        height: 40px
+                        line-height: @height
+                        margin-right: 25px
+
+                    &__restart
+                        svg
+                            width: 16px
+                            height: auto
+                            margin-right: 10px
+
+                    &__background
+                        top: 120px + 15px
+                        right: 20px
+
+                        svg
+                            &:nth-child(1)
+                                display: none
+
+                            &:nth-child(2)
+                                display: none
+
+                            &:nth-child(3)
+                                display: block
+
+@keyframes sp-it101-heart-hide
+    100%
+        opacity: 0
+        transform: translateY(-100%)
+
+@keyframes sp-it101-show
+    0%
+        opacity: 0

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="vk:image" content="https://leonardo.osnova.io/3505ae18-b425-e07d-14d6-c6872659a685/">
+    <meta property="twitter:image" content="https://leonardo.osnova.io/57a327b9-be98-6674-7a53-d0093b9c2230/">
+    <meta property="og:image" content="https://leonardo.osnova.io/57a327b9-be98-6674-7a53-d0093b9c2230/">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="315">
+    <meta property="og:title" content="ИТ-101">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Тест на знание азов технологий">
+    <meta name="description" content="Тест на знание азов технологий">
+    <link rel="image_src" href="https://leonardo.osnova.io/3505ae18-b425-e07d-14d6-c6872659a685/">
+    <meta property="og:url" content="https://valerypatorius.github.io/it101/">
+    <link rel="canonical" href="https://valerypatorius.github.io/it101/">
+
+    <title>ИТ-101</title>
+
+    <!-- Site styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&amp;subset=cyrillic,cyrillic-ext,latin-ext">
+    <link rel="stylesheet" href="https://static-osnova.gcdn.co/static/build/vc.ru/all.min.css">
+</head>
+
+<body class="layout layout--content layout--column-left-off layout--column-right-off">
+    <div class="main_menu">
+        <a class="main_menu__logo l-ml-20 lm-ml-15 l-mr-20 lm-mr-10" href="https://vc.ru">
+            <svg class="icon icon--site_logo" width="36" height="50" viewBox="0 404.142 36 33.608" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28.813 419.643c2.65 0 4.645-1.104 6.116-3.026l-1.966-1.5a5.188 5.188 0 01-4.15 2.052c-2.876 0-4.96-2.343-4.96-5.218s2.05-5.35 5.042-5.35c1.33 0 2.27.314 3.09.822v2.528h2.474v-3.686l-.474-.373c-1.36-1.07-3.437-1.638-5.173-1.638-4.244 0-7.696 3.452-7.696 7.696 0 4.24 3.45 7.693 7.696 7.693zm5.133 15.18l-.088-3.543v-8.646h-5.16v2.475h2.554v5.866c0 2.527-1.93 4.316-3.877 4.316s-2.963-1.35-2.963-3.876v-8.782h-4.82v2.475h2.214v6.736c0 3.428 1.922 5.79 5.35 5.79 1.97 0 3.47-1.093 4.365-2.778h.04l.353 2.356h3.965v-2.386h-1.93v-.005zm-13.4-30.206h-4.3l-3.74 10.86h-.058l-3.72-10.86H4.146v2.476h2.577l4.435 12.378h2.356v-.003l4.625-12.374h2.405v-2.476zM.122 437.244H2.67v-2.547H.123v2.547zm9.84-11.74h-.028l-.16-2.87H5.226v2.256h2.42v9.934h-2.42v2.387h11.24v-2.34h-6.258v-5.995c.283-2.17 1.91-4.023 4.13-4.023h.04l-.045 2.218h2.474v-4.478h-1.956c-2.24-.006-3.902 1.206-4.89 2.912z"></path>
+            </svg>
+        </a>
+    </div>
+
+    <div class="main layout">
+        <div class="layout__column layout__column--center l-relative">
+            <div id="page_wrapper">
+                <style>
+                    #special-it101:not(.sp-it101) {
+                        min-height: 600px;
+                        background-color: #fff;
+                    }
+                    @media (max-width: 839px) {
+                        body {
+                            background-color: #fff;
+                        }
+                    }
+                </style>
+                <div id="special-it101"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function(d, v){
+            var script = d.createElement('script');
+            script.src = './app.js?v=' + v;
+            script.async = true;
+            script.onload = init;
+            d.body.appendChild(script);
+
+            var container = document.getElementById('special-it101');
+            var newContainer = container.cloneNode();
+
+            container.parentNode.replaceChild(newContainer, container);
+
+            function init() {
+                var Special = new It101({
+                    container: newContainer,
+                    css: './app.css?v=' + v,
+                    // isCompact: true,
+                });
+            }
+        })(document, 1);
+    </script>
+</body>
+
+</html>
